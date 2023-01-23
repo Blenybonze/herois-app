@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { HeroisRoutingModule } from './herois-routing.module';
+import { MaterialModule } from '../material/material.module';
 
 
 import { InserirComponent } from './pages/inserir/inserir.component';
@@ -10,8 +11,6 @@ import { BuscarComponent } from './pages/buscar/buscar.component';
 import { HeroiComponent } from './pages/heroi/heroi.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListarComponent } from './pages/listar/listar.component';
-
-
 
 
 @NgModule({
@@ -25,6 +24,7 @@ import { ListarComponent } from './pages/listar/listar.component';
   imports: [
     CommonModule,
     HeroisRoutingModule,
+    MaterialModule
   ]
 })
 export class HeroisModule { }
