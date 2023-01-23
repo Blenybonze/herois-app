@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+
+import { HeroisRoutingModule } from './herois-routing.module';
+
+
 import { InserirComponent } from './pages/inserir/inserir.component';
 import { BuscarComponent } from './pages/buscar/buscar.component';
 import { HeroiComponent } from './pages/heroi/heroi.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListarComponent } from './pages/listar/listar.component';
+
 
 
 
@@ -14,10 +20,11 @@ import { ListarComponent } from './pages/listar/listar.component';
     BuscarComponent,
     HeroiComponent,
     HomeComponent,
-    ListarComponent
+    ListarComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HeroisRoutingModule,
   ]
 })
 export class HeroisModule { }
