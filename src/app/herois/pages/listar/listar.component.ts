@@ -15,6 +15,7 @@ export class ListarComponent implements OnInit {
 
   ngOnInit(): void {
     this.heroisService.getHerois().subscribe(resp => {
+      console.log(resp)
       this.herois = resp
     })
   }

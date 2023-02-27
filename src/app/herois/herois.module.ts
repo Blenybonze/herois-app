@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { HeroisRoutingModule } from './herois-routing.module';
 import { MaterialModule } from '../material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 import { InserirComponent } from './pages/inserir/inserir.component';
@@ -24,7 +25,8 @@ import { ListarComponent } from './pages/listar/listar.component';
   imports: [
     CommonModule,
     HeroisRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ]
 })
 export class HeroisModule { }

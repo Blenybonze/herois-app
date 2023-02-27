@@ -1,7 +1,28 @@
-<p>listar works!</p>
+<h1>Lista de Herois</h1>
+<mat-divider></mat-divider>
+<br>
 
-<ul>
-    <li *ngFor="let heroi of herois">
-        {{heroi.superhero}}
-    </li>
-</ul>
+<div fxLayout="row">
+    <mat-card *ngFor="let heroi of herois">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{heroi.superhero}}</mat-card-title>
+            <mat-card-subtitle>{{heroi.alter_ego}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image alt="{{heroi.id}}" src="assets/herois/{{heroi.id}}.jpg">
+        <mat-card-content>
+            <h3>{{heroi.publisher}}</h3>
+            <p>
+                <strong>Primeira aparição</strong> {{heroi.first_appearance}}
+                <br>
+                <strong>Personagem: </strong>{{heroi.characters}}
+            </p>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-button color="warn"> Ler mais...</button>
+            <button mat-button color="info"> Editar</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
