@@ -12,6 +12,8 @@ import { BuscarComponent } from './pages/buscar/buscar.component';
 import { HeroiComponent } from './pages/heroi/heroi.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListarComponent } from './pages/listar/listar.component';
+import { HeroiTarjetaComponent } from './components/heroi-tarjeta/heroi-tarjeta.component';
+import { ImagemPipe } from './pipes/imagem.pipe';
 
 
 @NgModule({
@@ -21,12 +23,16 @@ import { ListarComponent } from './pages/listar/listar.component';
     HeroiComponent,
     HomeComponent,
     ListarComponent,
+    HeroiTarjetaComponent,
+
+    //pipes
+    ImagemPipe
   ],
   imports: [
     CommonModule,
     HeroisRoutingModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ]
 })
 export class HeroisModule { }
