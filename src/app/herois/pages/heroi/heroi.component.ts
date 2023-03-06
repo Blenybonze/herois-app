@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Heroi } from '../../interfaces/herois.interface';
 import { HeroisService } from '../../services/herois.service';
@@ -15,7 +15,8 @@ export class HeroiComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private heroisService: HeroisService
+    private heroisService: HeroisService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,5 +25,9 @@ export class HeroiComponent implements OnInit {
         switchMap(({ id }) => this.heroisService.getHeroiPorId(id))
       )
       .subscribe(heroi => this.heroi = heroi)
+  }
+
+  retornar(){
+    this.router.navigate(['/herois/listar']);
   }
 }
