@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HeroisRoutingModule } from './herois-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 
 import { InserirComponent } from './pages/inserir/inserir.component';
@@ -31,6 +32,7 @@ import { ImagemPipe } from './pipes/imagem.pipe';
   imports: [
     CommonModule,
     HeroisRoutingModule,
+    FormsModule,
     MaterialModule,
     FlexLayoutModule,
   ]
