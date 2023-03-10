@@ -18,4 +18,8 @@ export class HeroisService {
   getHeroiPorId(id: string): Observable<Heroi> {
     return this.http.get<Heroi>(`${this.urlDefault}/heroes/${id}`);
   }
+
+  getAutoComplete(pesquisa: string): Observable<Heroi[]> {
+    return this.http.get<Heroi[]>(`${this.urlDefault}/heroes?q=${pesquisa}&_limit=6`);
+  }
 }

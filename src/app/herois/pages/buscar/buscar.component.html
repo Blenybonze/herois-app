@@ -3,7 +3,7 @@
         <h1>Buscador de Heróis</h1>
         <mat-divider></mat-divider>
     </div>
-    <div>
+    <div fxLayout="column">
         <h3>Buscar</h3>
 
         <mat-form-field class="example-full-width" appearance="fill">
@@ -16,8 +16,10 @@
                    [(ngModel)]="terminalBusca"
                    [matAutocomplete]="auto"
                    (input)="buscando()">
-                   
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+
+            <mat-autocomplete 
+                autoActiveFirstOption 
+                #auto="matAutocomplete">
               <mat-option *ngFor="let heroi of herois" [value]="heroi.superhero">
                 {{heroi.superhero}}
               </mat-option>
@@ -25,3 +27,5 @@
           </mat-form-field>
     </div>
 </div>
+
+{{heroiSelecionado}}
