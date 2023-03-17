@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Heroi } from '../../interfaces/herois.interface';
 import { HeroisService } from '../../services/herois.service';
 
@@ -19,8 +18,16 @@ export class BuscarComponent {
     this.herois = [];
     this.heroisService.getAutoComplete(this.terminalBusca)
       .subscribe(herois => {
+        console.log(herois)
         this.herois = herois;
       })
+  }
+
+  selecionaHeroi(heroiSelecionado: Heroi) {
+    this.terminalBusca = heroiSelecionado.superhero;
+
+    this.heroisService.getHeroiPorId(heroiSelecionado.id!)
+      .subscribe(heroi => this.heroiSelecionado = heroi)
   }
 
 }

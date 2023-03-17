@@ -20,7 +20,10 @@
             <mat-autocomplete 
                 autoActiveFirstOption 
                 #auto="matAutocomplete">
-              <mat-option *ngFor="let heroi of herois" [value]="heroi.superhero">
+              <mat-option 
+                *ngFor="let heroi of herois"
+                [value]="heroi.superhero"
+                (click)="selecionaHeroi(heroi)">
                 {{heroi.superhero}}
               </mat-option>
             </mat-autocomplete>
@@ -28,4 +31,4 @@
     </div>
 </div>
 
-{{heroiSelecionado}}
+{{heroiSelecionado | json}}
