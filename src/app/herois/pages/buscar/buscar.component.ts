@@ -1,33 +1,45 @@
-import { Component } from '@angular/core';
 import { Heroi } from '../../interfaces/herois.interface';
 import { HeroisService } from '../../services/herois.service';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-buscar',
   templateUrl: './buscar.component.html',
-  styleUrls: ['./buscar.component.css']
+  styles: [
+  ]
 })
-export class BuscarComponent {
-  terminalBusca: string = '';
+export class BuscarComponent implements OnInit {
+
+  terminal: string = '';
   herois: Heroi[] = [];
-  heroiSelecionado!: Heroi;
+  heroiSelecionado: Heroi | undefined;
 
-  constructor(private heroisService: HeroisService) { }
+  constructor(private heroesService: HeroisService) { }
 
-  buscando() {
-    this.herois = [];
-    this.heroisService.getAutoComplete(this.terminalBusca)
-      .subscribe(herois => {
-        console.log(herois)
-        this.herois = herois;
-      })
+  ngOnInit(): void {
   }
 
-  selecionaHeroi(heroiSelecionado: Heroi) {
-    this.terminalBusca = heroiSelecionado.superhero;
 
-    this.heroisService.getHeroiPorId(heroiSelecionado.id!)
-      .subscribe(heroi => this.heroiSelecionado = heroi)
+  buscando() {
+
+    this.heroesService.getAutoComplete(this.terminal.trim())
+      .subscribe(heroes => this.herois = heroes);
+
+  }
+
+  opcionSeleccionada(event: MatAutocompleteSelectedEvent) {
+
+    if (!event.option.value) {
+      this.heroiSelecionado = undefined;
+      return;
+    }
+
+    const heroe: Heroi = event.option.value;
+    this.terminal = heroe.superhero;
+
+    this.heroesService.getHeroiPorId(heroe.id!)
+      .subscribe(heroe => this.heroiSelecionado = heroe);
   }
 
 }
