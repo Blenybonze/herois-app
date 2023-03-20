@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
+
 export class BuscarComponent implements OnInit {
 
   terminal: string = '';
@@ -20,16 +21,12 @@ export class BuscarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   buscando() {
-
     this.heroesService.getAutoComplete(this.terminal.trim())
       .subscribe(heroes => this.herois = heroes);
-
   }
 
   opcionSeleccionada(event: MatAutocompleteSelectedEvent) {
-
     if (!event.option.value) {
       this.heroiSelecionado = undefined;
       return;

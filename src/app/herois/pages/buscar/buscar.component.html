@@ -15,17 +15,21 @@
             [(ngModel)]="terminal"
             [matAutocomplete]="auto"
             (input)="buscando()">
+
           <mat-autocomplete 
             autoActiveFirstOption 
             #auto="matAutocomplete"
             (optionSelected)="opcionSeleccionada( $event )">
+
             <mat-option *ngFor="let heroi of herois" [value]="heroi">
               {{ heroi.superhero }}
             </mat-option>
+            
             <mat-option value="" *ngIf="herois.length === 0 && terminal.trim().length > 0">
               Nada encontrado com o nome: {{ terminal }}
             </mat-option>
           </mat-autocomplete>
+
       </mat-form-field>
   </div>
   <div>
