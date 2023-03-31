@@ -8,7 +8,7 @@
     <div fxFlex="50" fxLayout="column">
 
         <div 
-            fxLayout="row" 
+            fxLayout="row"
             fxLayoutGap="20px"
             fxLayout.xs="column">
             <mat-form-field fxFlex="100" fxLayout.xs="column">
@@ -16,6 +16,7 @@
                 <input 
                     matInput
                     type="text"
+                    [(ngModel)]="heroi.superhero"
                     required>
             </mat-form-field>
     
@@ -24,6 +25,7 @@
                 <input 
                     matInput
                     type="text"
+                    [(ngModel)]="heroi.alter_ego"
                     required>
             </mat-form-field>
         </div>
@@ -34,6 +36,7 @@
             <input 
                 matInput
                 type="text"
+                [(ngModel)]="heroi.first_appearance"
                 required>
         </mat-form-field>
 
@@ -42,16 +45,19 @@
             <input 
                 matInput
                 type="text"
+                [(ngModel)]="heroi.characters"
                 required>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Creador</mat-label>
-            <mat-select>
+            <mat-select 
+                [(ngModel)]="heroi.publisher"
+                required>
                 <mat-option 
                     *ngFor="let publicante of publicantes"
                     [value]="publicante.id">
-                    {{  publicante.desc }}
+                    {{ publicante.desc }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -66,7 +72,7 @@
 
         <br>
 
-        <button type="button"  mat-raised-button color="primary">
+        <button type="button"  mat-raised-button color="primary" (click)="salvar()">
             <mat-icon>edit</mat-icon>
             Criar
         </button>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Heroi, Publisher } from '../../interfaces/herois.interface';
+import { HeroisService } from '../../services/herois.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-inserir',
@@ -28,9 +31,39 @@ export class InserirComponent implements OnInit {
     alt_img: '',
   }
 
-  constructor() { }
+  constructor(
+    private heroisService: HeroisService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    this.activatedRoute.params
+      .pipe(
+        switchMap(({ id }) => this.heroisService.getHeroiPorId(id))
+      )
+      .subscribe(heroi => this.heroi = heroi);
+  }
+
+  salvar() {
+    if (this.heroi.superhero.trim().length === 0) {
+      return
+    }
+
+    //Atualizar
+    if (this.heroi.id) {
+      this.heroisService.PutAtualizarHeroi(this.heroi)
+        .subscribe(heroi => {
+          console.log("atualizando", heroi)
+        });
+    } else {
+      this.heroisService.PostHeroiAdd(this.heroi)
+        .subscribe(heroi => {
+          this.router.navigate(['/herois/editar',heroi.id])
+        });
+    }
+
+
 
   }
 
