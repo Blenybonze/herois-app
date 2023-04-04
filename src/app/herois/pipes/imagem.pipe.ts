@@ -8,7 +8,9 @@ import { Heroi } from '../interfaces/herois.interface';
 export class ImagemPipe implements PipeTransform {
 
     transform(heroi: Heroi): string {
-        return `assets/herois/${heroi.id}.jpg`
+        if (!heroi.id && !heroi.alt_img) return 'assets/no-image.png'
+        else if (heroi.alt_img) return heroi.alt_img
+        else return `assets/herois/${heroi.id}.jpg`
     }
 
 }

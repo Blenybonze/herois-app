@@ -38,11 +38,18 @@ export class InserirComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.activatedRoute.params
-      .pipe(
-        switchMap(({ id }) => this.heroisService.getHeroiPorId(id))
-      )
-      .subscribe(heroi => this.heroi = heroi);
+
+    if (!this.router.url.includes(`editar`)) {
+      return
+    } else {
+      this.activatedRoute.params
+        .pipe(
+          switchMap(({ id }) => this.heroisService.getHeroiPorId(id))
+        )
+        .subscribe(heroi => this.heroi = heroi);
+    }
+
+
   }
 
   salvar() {
@@ -52,6 +59,7 @@ export class InserirComponent implements OnInit {
 
     //Atualizar
     if (this.heroi.id) {
+      console.log(this.heroi)
       this.heroisService.PutAtualizarHeroi(this.heroi)
         .subscribe(heroi => {
           console.log("atualizando", heroi)
@@ -59,7 +67,7 @@ export class InserirComponent implements OnInit {
     } else {
       this.heroisService.PostHeroiAdd(this.heroi)
         .subscribe(heroi => {
-          this.router.navigate(['/herois/editar',heroi.id])
+          this.router.navigate(['/herois/editar', heroi.id])
         });
     }
 
