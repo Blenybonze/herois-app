@@ -70,9 +70,13 @@ export class InserirComponent implements OnInit {
           this.router.navigate(['/herois/editar', heroi.id])
         });
     }
+  }
 
-
-
+  deletarHeroi() {
+    this.heroisService.DeleteHeroi(this.heroi.id!)
+      .subscribe(resp => {
+        this.router.navigate(['/herois/listar'])
+      })
   }
 
 }

@@ -1,62 +1,36 @@
 <h1>Novo Herói </h1>
 
-<div 
-    fxLayout="row"
-    fxLayout.xs="column"
-    fxLayoutGap="40px">
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
 
     <div fxFlex="50" fxLayout="column">
 
-        <div 
-            fxLayout="row"
-            fxLayoutGap="20px"
-            fxLayout.xs="column">
+        <div fxLayout="row" fxLayoutGap="20px" fxLayout.xs="column">
             <mat-form-field fxFlex="100" fxLayout.xs="column">
                 <mat-label>Super Herói</mat-label>
-                <input 
-                    matInput
-                    type="text"
-                    [(ngModel)]="heroi.superhero"
-                    required>
+                <input matInput type="text" [(ngModel)]="heroi.superhero" required>
             </mat-form-field>
-    
+
             <mat-form-field fxFlex="100">
                 <mat-label>Alter Ego</mat-label>
-                <input 
-                    matInput
-                    type="text"
-                    [(ngModel)]="heroi.alter_ego"
-                    required>
+                <input matInput type="text" [(ngModel)]="heroi.alter_ego" required>
             </mat-form-field>
         </div>
-        
+
 
         <mat-form-field fxFlex="100">
             <mat-label>Primeira Aparição</mat-label>
-            <input 
-                matInput
-                type="text"
-                [(ngModel)]="heroi.first_appearance"
-                required>
+            <input matInput type="text" [(ngModel)]="heroi.first_appearance" required>
         </mat-form-field>
 
         <mat-form-field fxFlex="100">
             <mat-label>Personagens</mat-label>
-            <input 
-                matInput
-                type="text"
-                [(ngModel)]="heroi.characters"
-                required>
+            <input matInput type="text" [(ngModel)]="heroi.characters" required>
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Creador</mat-label>
-            <mat-select 
-                [(ngModel)]="heroi.publisher"
-                required>
-                <mat-option 
-                    *ngFor="let publicante of publicantes"
-                    [value]="publicante.id">
+            <mat-select [(ngModel)]="heroi.publisher" required>
+                <mat-option *ngFor="let publicante of publicantes" [value]="publicante.id">
                     {{ publicante.desc }}
                 </mat-option>
             </mat-select>
@@ -64,19 +38,24 @@
 
         <mat-form-field fxFlex="100">
             <mat-label>Foto URL</mat-label>
-            <input 
-                [(ngModel)]="heroi.alt_img"
-                matInput
-                type="url"
-                required>
+            <input [(ngModel)]="heroi.alt_img" matInput type="url" required>
         </mat-form-field>
 
         <br>
 
-        <button type="button"  mat-raised-button color="primary" (click)="salvar()">
-            <mat-icon>edit</mat-icon>
-            Criar
-        </button>
+        <div fxLayout>
+            <button type="button" mat-raised-button color="primary" (click)="salvar()">
+                <mat-icon>edit</mat-icon>
+                Criar
+            </button>
+
+            <span class="spacer"></span>
+
+            <button *ngIf="heroi.id" mat-raised-button color="warm" (click)="deletarHeroi()">
+                <mat-icon>remove</mat-icon>
+                Deletar
+            </button>
+        </div>
 
     </div>
 
