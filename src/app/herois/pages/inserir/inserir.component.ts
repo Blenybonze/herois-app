@@ -3,6 +3,7 @@ import { Heroi, Publisher } from '../../interfaces/herois.interface';
 import { HeroisService } from '../../services/herois.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-inserir',
@@ -35,6 +36,7 @@ export class InserirComponent implements OnInit {
     private heroisService: HeroisService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -59,7 +61,8 @@ export class InserirComponent implements OnInit {
     if (this.heroi.id) {
       this.heroisService.PutAtualizarHeroi(this.heroi)
         .subscribe(heroi => {
-          console.log("atualizando", heroi)
+          this.exibirSnackBar('Registro atualizado');
+          console.log("atualizando", heroi);
         });
     } else {
       this.heroisService.PostHeroiAdd(this.heroi)
@@ -74,6 +77,13 @@ export class InserirComponent implements OnInit {
       .subscribe(resp => {
         this.router.navigate(['/herois/listar']);
       })
+  }
+
+  exibirSnackBar(msgn: string) {
+    this.snackBar.open(msgn, 'ok', {
+      duration: 2500,
+    });
+
   }
 
 }
