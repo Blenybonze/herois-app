@@ -23,6 +23,7 @@ export class HeroisService {
     return this.http.get<Heroi[]>(`${this.urlDefault}/heroes?q=${pesquisa}&_limit=6`);
   }
 
+
   //CRUD
   PostHeroiAdd(heroi: Heroi): Observable<Heroi> {
     return this.http.post<Heroi>(`${this.urlDefault}/heroes`, heroi);
