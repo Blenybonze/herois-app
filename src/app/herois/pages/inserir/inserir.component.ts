@@ -60,14 +60,12 @@ export class InserirComponent implements OnInit {
     //Atualizar
     if (this.heroi.id) {
       this.heroisService.PutAtualizarHeroi(this.heroi)
-        .subscribe(heroi => {
-          this.exibirSnackBar('Registro atualizado');
-          console.log("atualizando", heroi);
-        });
+        .subscribe(heroi => this.exibirSnackBar('Registro atualizado'));
     } else {
       this.heroisService.PostHeroiAdd(this.heroi)
         .subscribe(heroi => {
           this.router.navigate(['/herois/editar', heroi.id])
+          this.exibirSnackBar('Registro Criado');
         });
     }
   }
