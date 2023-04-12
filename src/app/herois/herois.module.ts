@@ -15,6 +15,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ListarComponent } from './pages/listar/listar.component';
 import { HeroiTarjetaComponent } from './components/heroi-tarjeta/heroi-tarjeta.component';
 import { ImagemPipe } from './pipes/imagem.pipe';
+import { ConfirmarComponent } from './components/confirmar/confirmar.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ImagemPipe } from './pipes/imagem.pipe';
     HeroiTarjetaComponent,
 
     //pipes
-    ImagemPipe
+    ImagemPipe,
+      ConfirmarComponent
   ],
   imports: [
     CommonModule,
